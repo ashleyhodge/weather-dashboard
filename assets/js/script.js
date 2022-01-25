@@ -1,7 +1,11 @@
-var getWeatherUpdate = function() {
-    var response = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=41.4&lon=2.17&appid=95ce3e162e0116e8f93a9e96b347dad9").then(function(response){
-        console.log("inside",response)
+var apiKey = "95ce3e162e0116e8f93a9e96b347dad9"
+
+var getWeatherUpdate = function(lat,lon) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid="+ apiKey;
+   fetch(apiUrl).then(function(response){
+        response.json().then(function(data) {
+            console.log(data)
+        })
     });
-    console.log("outside");
 }
-getWeatherUpdate();
+getWeatherUpdate(63,43);
